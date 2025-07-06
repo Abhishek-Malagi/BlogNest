@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head') %>
+  <body>
+    <%- include('./partials/nav') %>
+
+    <section class="hero">
+      <h1>Welcome to My Blog</h1>
+      <p>
+        <%= user ? "Hello " + user.username : "Please login or register to create posts." %>
+      </p>
+    </section>
+
+    <section class="blog-list">
+      <% if (blogs.length === 0) { %>
+        <div class="no-blogs">
+          <h2>No Blogs Yet</h2>
+          <p>Start writing your first blog and share your thoughts!</p>
+          <a href="/blogs/create" class="create-btn">Create Blog</a>
+        </div>
+      <% } else { %>
+        <% blogs.forEach(blog => { %>
+          <div class="blog-card" id="card-<%= blog._id %>">
+            <img src="<%= blog.thumbnail %>" alt="Thumbnail" />
+            <h2><%= blog.title %></h2>
+            <p>By <%= blog.author.username %></p>
+
+            <a href="/blogs/<%= blog._id %>" class="read-more">Read More</a>
+
+            <% if (user && user._id.toString() === blog.author._id.toString()) { %>
+              <div class="action-buttons">
+                <a href="/blogs/edit/<%= blog._id %>" class="edit">Edit</a>
+                <button class="delete-show-confirm" data-id="<%= blog._id %>">Delete</button>
+              </div>
+
+              <form method="POST" action="/blogs/<%= blog._id %>?_method=DELETE" class="delete-form hidden" id="confirm-<%= blog._id %>">
+                <p class="confirm-text">Are you sure you want to delete this blog?</p>
+                <div class="confirm-buttons">
+                  <button type="submit" class="confirm-yes">Yes</button>
+                  <button type="button" class="confirm-cancel" data-id="<%= blog._id %>">Cancel</button>
+                </div>
+              </form>
+            <% } %>
+          </div>
+        <% }) %>
+      <% } %>
+    </section>
+
+    <%- include('./partials/script') %>
+
+    <!-- VANTA.JS Background -->
+    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.birds.min.js"></script>
+    <script>
+      VANTA.BIRDS({
+        el: "body",
+        backgroundColor: 0xf9f9f9,
+        color1: 0x5b5fef,
+        color2: 0x6a82fb,
+        birdSize: 1.5,
+        quantity: 3
+      });
+    </script>
+
+    <!-- Delete Confirmation JS -->
+    <script>
+      document.querySelectorAll(".delete-show-confirm").forEach(button => {
+        button.addEventListener("click", () => {
+          const id = button.dataset.id;
+          document.getElementById(`confirm-${id}`).classList.remove("hidden");
+        });
+      });
+
+      document.querySelectorAll(".confirm-cancel").forEach(button => {
+        button.addEventListener("click", () => {
+          const id = button.dataset.id;
+          document.getElementById(`confirm-${id}`).classList.add("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>

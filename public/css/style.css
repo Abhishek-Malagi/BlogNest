@@ -1,0 +1,548 @@
+/* Reset & base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #242424;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00ffd5;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    margin-top: 40px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #666;
+}
+
+/* Blog Grid Layout */
+.blog-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 10px;
+    padding: 0 20px;
+    min-height: 300px;
+}
+
+@media (max-width: 1024px) {
+    .blog-list {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .blog-list {
+        flex-direction: column;
+    }
+}
+
+/* Blog Card */
+.blog-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: scale(1.1)translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.blog-card h2 {
+    font-size: 1.4rem;
+    margin: 16px 0 8px;
+    color: #222;
+}
+
+.blog-card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+/* Read More */
+.blog-card a.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #5b5fef;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* Stylish Edit & Delete Buttons */
+.blog-card .edit,
+.blog-card .delete {
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 8px 6px 0;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Edit Button */
+a.edit {
+    background: linear-gradient(to right, #f39c12, #f1c40f);
+    color: #fff;
+}
+
+a.edit:hover {
+    background: linear-gradient(to right, #d68910, #f4d03f);
+    transform: translateY(-2px);
+}
+.blog-card a.read-more{
+    display: inline-block;
+transform: translateX(80px);
+
+        font-size: 0.95rem;
+        width: 100px;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    background: linear-gradient(to right, #f39c12, #f1c40f);
+        color: #fff;
+}
+.blog-card a.read-more:hover {
+    background: linear-gradient(to right, #d68910, #f4d03f);
+    transform: scale(1.1)translateX(80px);
+}
+
+/* Delete Button */
+form button.delete {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    color: white;
+}
+
+form button.delete:hover {
+    background: linear-gradient(to right, #c0392b, #a93226);
+    transform: translateY(-2px);
+}
+
+/* No Blogs */
+.no-blogs {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.no-blogs h2 {
+    font-size: 2.5rem;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.no-blogs p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.no-blogs .create-btn {
+    background: linear-gradient(to right, #5b5fef, #6a82fb);
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.no-blogs .create-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(to right, #4a54e1, #5b6fff);
+}
+
+/* Forms */
+.auth-form {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-form input,
+.auth-form textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.auth-form button {
+    padding: 10px;
+    background: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.auth-form button:hover {
+    background: #005ee0;
+}
+
+.auth-form .error {
+    color: red;
+    text-align: center;
+}
+
+/* Blog View Page */
+.blog-view {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.blog-view img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.blog-view form {
+    margin-top: 30px;
+}
+
+.blog-view textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+/* Comments Section */
+.comments-section {
+    margin-top: 40px;
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.comments-section h3 {
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.comment-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.comment-list li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.comment-list li strong {
+    color: #0077ff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.hidden {
+    display: none;
+}
+
+.delete-section {
+    margin-top: 10px;
+}
+
+.delete-show-confirm {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.delete-show-confirm:hover {
+    background: linear-gradient(to right, #c0392b, #a93226);
+}
+
+.confirm-text {
+    margin: 10px 0 6px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.confirm-buttons {          
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.confirm-yes,
+.confirm-cancel {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.confirm-yes {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.confirm-yes:hover {
+    background-color: #c0392b;
+}
+
+.confirm-cancel {
+    background-color: #bdc3c7;
+    color: #2c3e50;
+}
+
+.confirm-cancel:hover {
+    background-color: #95a5a6;
+}
+/* Edit and Delete Button Container */
+.blog-card .action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+/* Edit Button */
+.blog-card a.edit {
+    background: linear-gradient(to right, #f39c12, #f1c40f);
+    color: white;
+    padding:6px 21px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transform: translateY(-4px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.blog-card a.edit:hover {
+    background: linear-gradient(to right, #e67e22, #f7dc6f);
+    transform: scale(1.1) translateY(-7px);}
+
+/* Show Delete Confirmation Button */
+.blog-card button.delete-show-confirm {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.blog-card button.delete-show-confirm:hover {
+    background: linear-gradient(to right, #c0392b, #a93226);
+    transform:scale(1.1) translateY(-2px);
+}
+
+/* Confirmation Form */
+.blog-card .delete-form {
+    margin-top: 12px;
+    background: #fff4f4;
+    padding: 10px;
+    border: 1px solid #ffb3b3;
+    border-radius: 8px;
+}
+
+.confirm-text {
+    font-size: 0.95rem;
+    color: #c0392b;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.confirm-yes {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.confirm-yes:hover {
+    background-color: #c0392b;
+}
+
+.confirm-cancel {
+    background-color: #dcdcdc;
+    color: #333;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.confirm-cancel:hover {
+    background-color: #b5b5b5;
+}
+/* Post Comment Button */
+.blog-view button[type="submit"] {
+    background: linear-gradient(to right, #5b5fef, #6a82fb);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.blog-view button[type="submit"]:hover {
+    background: linear-gradient(to right, #4a54e1, #5b6fff);
+    transform: translateY(-2px);
+}.blog-view textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    margin-top: 15px;
+}

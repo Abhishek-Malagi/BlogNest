@@ -1,0 +1,40 @@
+<!DOCTYPE html> 
+<html lang="en">
+<%- include('./partials/head') %>
+<body>
+<%- include('./partials/nav') %>
+
+<section class="auth-form">
+    <h2>Edit Blog</h2>
+    <form method="POST" action="/blogs/<%= blog._id %>?_method=PUT" enctype="multipart/form-data">
+        <input type="text" name="title" value="<%= blog.title %>" required />
+        <textarea name="body" required><%= blog.body %></textarea>
+
+        <label for="thumbnail">Change Thumbnail:</label>
+        <input type="file" id="thumbnail" name="thumbnail" accept="image/*" onchange="previewImage(event)" />
+
+        <img id="preview" src="<%= blog.thumbnail %>" alt="Current Image" style="max-width: 100%; margin-top: 15px; border-radius: 10px;" />
+
+        <button type="submit">Update</button>
+    </form>
+</section>
+
+<script>
+function previewImage(event) {
+    const input = event.target;
+    const preview = document.getElementById('preview');
+
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = "block";
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
+
+<%- include('./partials/script') %>
+</body>
+</html>

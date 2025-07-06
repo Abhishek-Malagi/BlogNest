@@ -1,0 +1,58 @@
+<script src="/js/main.js">
+</script>
+
+<script>
+    gsap.from(".no-blogs", {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+  </script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const showButtons = document.querySelectorAll(".delete-show-confirm");
+      const cancelButtons = document.querySelectorAll(".confirm-cancel");
+  
+      showButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-id");
+          document.getElementById(`confirm-${id}`).classList.remove("hidden");
+          btn.style.display = "none";
+        });
+      });
+  
+      cancelButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-id");
+          document.getElementById(`confirm-${id}`).classList.add("hidden");
+          const showBtn = document.querySelector(`.delete-show-confirm[data-id="${id}"]`);
+          if (showBtn) showBtn.style.display = "inline-block";
+        });
+      });
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+    const showButtons = document.querySelectorAll(".delete-show-confirm");
+    const cancelButtons = document.querySelectorAll(".confirm-cancel");
+
+    showButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-id");
+        document.getElementById(`confirm-${id}`).classList.remove("hidden");
+        btn.style.display = "none";
+      });
+    });
+
+    cancelButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-id");
+        document.getElementById(`confirm-${id}`).classList.add("hidden");
+        const showBtn = document.querySelector(`.delete-show-confirm[data-id="${id}"]`);
+        if (showBtn) showBtn.style.display = "inline-block";
+      });
+    });
+  });
+  </script>
+  
+  
